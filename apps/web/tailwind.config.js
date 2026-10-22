@@ -9,21 +9,35 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        sci: {
-          dark: '#090d16',
-          card: '#111827',
-          border: '#1f293d',
-          physics: '#38bdf8',
-          math: '#a78bfa',
-          chem: '#34d399',
-          eng: '#fbbf24'
+        glass: {
+          light: 'rgba(255, 255, 255, 0.04)',
+          medium: 'rgba(255, 255, 255, 0.08)',
+          border: 'rgba(255, 255, 255, 0.12)',
+          borderHover: 'rgba(255, 255, 255, 0.25)'
         }
       },
-      screens: {
-        'ipad-p': { 'raw': '(min-width: 768px) and (max-width: 1024px) and (orientation: portrait)' },
-        'ipad-l': { 'raw': '(min-width: 1024px) and (max-width: 1366px) and (orientation: landscape)' }
+      fontFamily: {
+        sans: [
+          'SF Pro Display',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          '"Segoe UI"',
+          'Roboto',
+          'sans-serif'
+        ],
+        mono: [
+          'SF Mono',
+          'ui-monospace',
+          'Menlo',
+          'Monaco',
+          'Consolas',
+          'monospace'
+        ]
+      },
+      backdropBlur: {
+        xs: '2px',
+        '2xl': '40px',
+        '3xl': '64px'
       }
     },
   },

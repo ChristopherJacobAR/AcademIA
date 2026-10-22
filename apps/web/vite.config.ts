@@ -16,8 +16,8 @@ export default defineConfig({
         name: 'Academia Científica IA',
         short_name: 'AcademIA',
         description: 'Sistema personal de aprendizaje científico exigente y videojuegos de física/matemáticas/química/ingeniería.',
-        theme_color: '#090d16',
-        background_color: '#090d16',
+        theme_color: '#000000',
+        background_color: '#000000',
         display: 'standalone',
         orientation: 'any',
         icons: [
@@ -34,6 +34,7 @@ export default defineConfig({
         ]
       },
       workbox: {
+        maximumFileSizeToCacheInBytes: 30 * 1024 * 1024, // 30 MB to precache catalog.json
         globPatterns: ['**/*.{js,css,html,ico,png,svg,json}']
       }
     })

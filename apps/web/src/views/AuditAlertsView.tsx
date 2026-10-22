@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertTriangle, ShieldAlert, Search } from 'lucide-react';
+import { AlertTriangle, Search } from 'lucide-react';
 import { db } from '@academia/storage';
 import { useLiveQuery } from 'dexie-react-hooks';
 
@@ -21,27 +21,27 @@ export const AuditAlertsView: React.FC = () => {
   });
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto px-4 py-6">
+    <div className="space-y-6 max-w-7xl mx-auto px-4 py-8">
       <div className="space-y-1">
-        <h1 className="text-xl md:text-2xl font-extrabold text-white flex items-center gap-2">
-          <AlertTriangle className="w-6 h-6 text-amber-400" />
-          Panel de Auditoría e Integridad (112 Alertas Registradas)
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5 tracking-tight">
+          <AlertTriangle className="w-7 h-7 text-white" />
+          112 Alertas de Integridad Curricular
         </h1>
-        <p className="text-xs md:text-sm text-slate-400">
-          Invariante ética: no ocultar lagunas documentales. Cada discrepancia de extracción, ambigüedad en números de capítulo o epígrafe sin correspondencia unívoca se preserva como alerta auditable.
+        <p className="text-xs sm:text-sm text-neutral-400 font-light mt-1">
+          Invariante epistemológico: no maquillar datos. Las discrepancias de extracción y epígrafes pendientes de homologación se preservan auditables.
         </p>
       </div>
 
       {/* Filter and Search Bar */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
         <div className="relative flex-1">
-          <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-slate-400" />
+          <Search className="w-4 h-4 absolute left-4 top-3 text-neutral-500" />
           <input
             type="text"
             placeholder="Buscar alertas por descripción, código o materia..."
             value={searchTerm}
             onChange={e => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 transition"
+            className="glass-input w-full pl-11 pr-4 py-2.5 rounded-2xl text-xs sm:text-sm text-white placeholder-neutral-500 font-light"
           />
         </div>
 
@@ -50,10 +50,10 @@ export const AuditAlertsView: React.FC = () => {
             <button
               key={sev}
               onClick={() => setSelectedSeverity(sev)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition ${
+              className={`px-3.5 py-1.5 rounded-xl text-xs font-medium whitespace-nowrap transition-all duration-200 ${
                 selectedSeverity === sev
-                  ? 'bg-amber-600 text-white'
-                  : 'bg-slate-900 text-slate-400 hover:text-white border border-slate-800'
+                  ? 'bg-white text-black font-semibold'
+                  : 'glass-pill hover:bg-white/10 text-neutral-300'
               }`}
             >
               {sev === 'ALL' ? 'Todas' : sev.toUpperCase()}
@@ -64,47 +64,37 @@ export const AuditAlertsView: React.FC = () => {
 
       {/* Alerts List */}
       <div className="space-y-3">
-        {filteredAlerts.map(alert => {
-          const badgeColor =
-            alert.severity === 'critical'
-              ? 'bg-red-500/10 text-red-400 border-red-500/30'
-              : alert.severity === 'high'
-              ? 'bg-orange-500/10 text-orange-400 border-orange-500/30'
-              : alert.severity === 'medium'
-              ? 'bg-amber-500/10 text-amber-400 border-amber-500/30'
-              : 'bg-slate-800 text-slate-400 border-slate-700';
-
-          return (
-            <div
-              key={alert.id}
-              className="p-4 rounded-xl bg-slate-900/70 border border-slate-800 hover:border-slate-700 transition space-y-2 text-xs"
-            >
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <ShieldAlert className="w-4 h-4 text-amber-400" />
-                  <span className="font-mono font-bold text-white">{alert.id}</span>
-                  <span className={`text-[10px] uppercase font-bold px-2 py-0.5 rounded-full border ${badgeColor}`}>
-                    {alert.severity}
-                  </span>
-                  {alert.subject_id && (
-                    <span className="font-mono text-slate-400 bg-slate-950 px-2 py-0.5 rounded border border-slate-800">
-                      {alert.subject_id}
-                    </span>
-                  )}
-                </div>
-                <span className="text-[10px] px-2 py-0.5 rounded bg-slate-950 text-slate-400 border border-slate-800">
-                  {alert.resolution_status}
+        {filteredAlerts.map(alert => (
+          <div
+            key={alert.id}
+            className="p-5 rounded-2xl glass-card space-y-2 text-xs border border-white/10"
+          >
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2.5">
+                <span className="font-mono font-bold text-white tracking-wider">{alert.id}</span>
+                <span className="text-[9px] uppercase font-mono px-2 py-0.5 rounded-full border border-white/15 text-neutral-300">
+                  {alert.severity}
                 </span>
+                {alert.subject_id && (
+                  <span className="font-mono text-neutral-300 bg-white/[0.05] px-2 py-0.5 rounded border border-white/10 text-[10px]">
+                    {alert.subject_id}
+                  </span>
+                )}
               </div>
-
-              <p className="text-slate-200 text-sm leading-relaxed">{alert.description}</p>
+              <span className="text-[10px] px-2 py-0.5 rounded font-mono bg-white/[0.03] text-neutral-400 border border-white/10">
+                {alert.resolution_status}
+              </span>
             </div>
-          );
-        })}
+
+            <p className="text-neutral-200 text-xs sm:text-sm leading-relaxed font-light">
+              {alert.description}
+            </p>
+          </div>
+        ))}
 
         {filteredAlerts.length === 0 && (
-          <div className="p-8 text-center rounded-2xl bg-slate-900/40 border border-slate-800 text-slate-500 text-xs">
-            No se encontraron alertas con los filtros indicados.
+          <div className="p-12 text-center rounded-2xl glass-panel text-neutral-500 text-xs">
+            No se encontraron alertas registradas con los filtros actuales.
           </div>
         )}
       </div>

@@ -81,38 +81,38 @@ export const BackupView: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6 max-w-7xl mx-auto px-4 py-6">
+    <div className="space-y-6 max-w-7xl mx-auto px-4 py-8">
       <div className="space-y-1">
-        <h1 className="text-xl md:text-2xl font-extrabold text-white flex items-center gap-2">
-          <HardDriveDownload className="w-6 h-6 text-sky-400" />
-          Copias de Seguridad y Soberanía de Datos
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-white flex items-center gap-2.5 tracking-tight">
+          <HardDriveDownload className="w-7 h-7 text-white" />
+          Soberanía de Datos y Respaldos Cifrados
         </h1>
-        <p className="text-xs md:text-sm text-slate-400">
-          Invariante mandatorio: Al menos dos soportes independientes de los datos críticos (Nube + exportación local externa). Un proveedor gratuito no es garantía de retención.
+        <p className="text-xs sm:text-sm text-neutral-400 font-light mt-1">
+          Invariante mandatorio: Al menos dos soportes independientes de los datos críticos. Puedes exportar copias `.academybackup` con cifrado AES-GCM (PBKDF2).
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Export Card */}
-        <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <div className="glass-panel rounded-3xl p-6 sm:p-8 space-y-4 border border-white/10">
           <h2 className="text-base font-bold text-white flex items-center gap-2">
-            <HardDriveDownload className="w-5 h-5 text-sky-400" />
+            <HardDriveDownload className="w-5 h-5 text-white" />
             Exportar Respaldo Completo (.academybackup)
           </h2>
-          <p className="text-xs text-slate-300 leading-relaxed">
-            Genera un archivo JSON durable con manifiesto, hashes de contenido, registros fuente, avance y configuración.
+          <p className="text-xs text-neutral-300 leading-relaxed font-light">
+            Genera un archivo JSON durable con manifiesto, hashes de contenido, los 9,137 registros fuente, notas y configuraciones.
           </p>
 
-          <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800 space-y-2">
-            <label className="flex items-center gap-2 cursor-pointer text-xs text-slate-200">
+          <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/10 space-y-2.5">
+            <label className="flex items-center gap-2.5 cursor-pointer text-xs text-neutral-200">
               <input
                 type="checkbox"
                 checked={encrypt}
                 onChange={e => setEncrypt(e.target.checked)}
-                className="rounded bg-slate-900 border-slate-700 text-indigo-600 focus:ring-0"
+                className="rounded bg-black border-white/20 text-white focus:ring-0"
               />
               <span className="flex items-center gap-1.5 font-medium">
-                {encrypt ? <Lock className="w-3.5 h-3.5 text-amber-400" /> : <Unlock className="w-3.5 h-3.5 text-slate-400" />}
+                {encrypt ? <Lock className="w-3.5 h-3.5 text-white" /> : <Unlock className="w-3.5 h-3.5 text-neutral-500" />}
                 Cifrar copia con WebCrypto AES-GCM (PBKDF2)
               </span>
             </label>
@@ -123,52 +123,54 @@ export const BackupView: React.FC = () => {
                 placeholder="Ingresa contraseña de cifrado..."
                 value={password}
                 onChange={e => setPassword(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-900 border border-slate-800 rounded-lg text-xs text-white placeholder-slate-500 focus:outline-none focus:border-indigo-500"
+                className="glass-input w-full px-3.5 py-2.5 rounded-xl text-xs text-white placeholder-neutral-500 font-mono"
               />
             )}
           </div>
 
           <button
             onClick={handleExport}
-            className="w-full py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs transition shadow-lg shadow-sky-600/20"
+            className="w-full py-3 rounded-xl bg-white text-black font-semibold text-xs hover:bg-neutral-200 transition shadow-lg shadow-white/10"
           >
             Descargar Respaldo .academybackup
           </button>
         </div>
 
         {/* Restore Card */}
-        <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-6 space-y-4">
-          <h2 className="text-base font-bold text-white flex items-center gap-2">
-            <Upload className="w-5 h-5 text-indigo-400" />
-            Restaurar Respaldo
-          </h2>
-          <p className="text-xs text-slate-300 leading-relaxed">
-            Verifica el checksum SHA-256 antes de aplicar los datos y reemplaza la base IndexedDB de forma atómica y consistente.
-          </p>
-
-          <div className="p-4 rounded-xl border border-dashed border-slate-700 bg-slate-950/40 text-center space-y-2">
-            <label className="cursor-pointer inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold transition">
-              <Upload className="w-4 h-4" />
-              <span>Seleccionar archivo .academybackup</span>
-              <input
-                type="file"
-                accept=".json,.academybackup"
-                onChange={handleRestore}
-                className="hidden"
-              />
-            </label>
-            <p className="text-[11px] text-slate-500">
-              Si el archivo está cifrado, ingresa la contraseña en la casilla izquierda antes de restaurar.
+        <div className="glass-panel rounded-3xl p-6 sm:p-8 space-y-4 border border-white/10 flex flex-col justify-between">
+          <div className="space-y-3">
+            <h2 className="text-base font-bold text-white flex items-center gap-2">
+              <Upload className="w-5 h-5 text-white" />
+              Restaurar Respaldo
+            </h2>
+            <p className="text-xs text-neutral-300 leading-relaxed font-light">
+              Verifica el checksum SHA-256 antes de aplicar los datos y reemplaza la base IndexedDB de forma atómica y consistente.
             </p>
+
+            <div className="p-6 rounded-2xl border border-dashed border-white/20 bg-white/[0.02] text-center space-y-3">
+              <label className="cursor-pointer inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black text-xs font-semibold hover:bg-neutral-200 transition shadow-lg shadow-white/10">
+                <Upload className="w-4 h-4" />
+                <span>Seleccionar archivo .academybackup</span>
+                <input
+                  type="file"
+                  accept=".json,.academybackup"
+                  onChange={handleRestore}
+                  className="hidden"
+                />
+              </label>
+              <p className="text-[11px] text-neutral-500 font-light">
+                Si el respaldo está cifrado, ingresa la contraseña en la casilla de la izquierda antes de cargar el archivo.
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
       {statusMessage && (
         <div
-          className={`p-4 rounded-xl text-xs flex items-center gap-2 border ${
+          className={`p-4 rounded-2xl text-xs flex items-center gap-2 border ${
             statusMessage.type === 'success'
-              ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-300'
+              ? 'bg-white/[0.04] border-white/20 text-white'
               : 'bg-red-500/10 border-red-500/20 text-red-300'
           }`}
         >
@@ -177,29 +179,29 @@ export const BackupView: React.FC = () => {
         </div>
       )}
 
-      {/* Storage Health & Zero Cost Policy */}
-      <div className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5 space-y-3">
-        <h3 className="text-sm font-bold text-white flex items-center gap-2">
-          <Database className="w-4 h-4 text-sky-400" />
-          Salud de Almacenamiento en el Dispositivo
+      {/* Storage Health */}
+      <div className="glass-panel rounded-3xl p-6 space-y-3 border border-white/10">
+        <h3 className="text-sm font-bold text-white flex items-center gap-2 tracking-wide font-mono">
+          <Database className="w-4 h-4 text-white" />
+          Salud de Almacenamiento Local
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-          <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
-            <span className="text-slate-500 block text-[10px]">Uso Actual del Navegador</span>
+          <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/10">
+            <span className="text-neutral-500 block text-[10px] font-mono">Uso del Navegador</span>
             <span className="font-mono font-bold text-white">
-              {storageUsage ? `${storageUsage.usageMB} MB` : 'Estimando...'}
+              {storageUsage ? `${storageUsage.usageMB} MB` : '...'}
             </span>
           </div>
-          <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
-            <span className="text-slate-500 block text-[10px]">Cuota Disponible</span>
+          <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/10">
+            <span className="text-neutral-500 block text-[10px] font-mono">Cuota Disponible</span>
             <span className="font-mono font-bold text-white">
-              {storageUsage ? `${(storageUsage.quotaMB / 1024).toFixed(1)} GB` : 'Estimando...'}
+              {storageUsage ? `${(storageUsage.quotaMB / 1024).toFixed(1)} GB` : '...'}
             </span>
           </div>
-          <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800">
-            <span className="text-slate-500 block text-[10px]">Sincronización Cloud</span>
-            <span className="font-mono font-bold text-emerald-400">
-              Supabase Free (Opcional, Modo Offline)
+          <div className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/10">
+            <span className="text-neutral-500 block text-[10px] font-mono">Respaldo Cloud</span>
+            <span className="font-mono font-bold text-white">
+              Supabase Free (Desactivable)
             </span>
           </div>
         </div>

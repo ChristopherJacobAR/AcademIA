@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
   Atom,
   Database,
-  Moon,
-  Sun,
   Wifi,
   WifiOff,
   Sparkles
@@ -12,11 +10,10 @@ import { db } from '@academia/storage';
 import { useLiveQuery } from 'dexie-react-hooks';
 
 interface HeaderProps {
-  darkMode: boolean;
-  onToggleDarkMode: () => void;
+  onOpenSettings: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ darkMode, onToggleDarkMode }) => {
+export const Header: React.FC<HeaderProps> = ({ onOpenSettings }) => {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
 
   useEffect(() => {
@@ -49,65 +46,59 @@ export const Header: React.FC<HeaderProps> = ({ darkMode, onToggleDarkMode }) =>
   }, []);
 
   return (
-    <header className="border-b border-slate-800 bg-[#090d16]/95 backdrop-blur sticky top-0 z-50 px-4 lg:px-6 py-3">
+    <header className="border-b border-white/[0.08] bg-black/75 backdrop-blur-2xl sticky top-0 z-50 px-4 lg:px-8 py-3.5 transition-all">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
+        {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-600 via-indigo-600 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
-            <Atom className="w-6 h-6 text-white animate-spin-slow" />
+          <div className="w-9 h-9 rounded-xl bg-white text-black flex items-center justify-center font-black tracking-tighter shadow-[0_0_20px_rgba(255,255,255,0.15)]">
+            <Atom className="w-5 h-5 animate-spin-slow" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-bold text-lg tracking-tight text-white">AcademIA</span>
-              <span className="text-xs px-2 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 font-medium">
-                v2.0 Local-First
+              <span className="font-extrabold text-base tracking-widest text-white uppercase">
+                Academ<span className="text-neutral-400">IA</span>
+              </span>
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-white/[0.06] border border-white/10 text-neutral-300 font-mono tracking-wider">
+                v2.0
               </span>
             </div>
-            <p className="text-xs text-slate-400 hidden sm:block">
-              Academia Científica IA — Física, Matemáticas, Química e Ingeniería
+            <p className="text-[11px] text-neutral-400 hidden sm:block tracking-wide">
+              Física • Matemáticas • Química • Ingeniería
             </p>
           </div>
         </div>
 
+        {/* Status and Actions */}
         <div className="flex items-center gap-2 sm:gap-3">
           {/* IndexedDB Live Indicator */}
-          <div className="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-xs">
-            <Database className="w-3.5 h-3.5 text-sky-400" />
-            <span className="text-slate-400">IndexedDB:</span>
-            <span className="font-semibold text-slate-200">
-              {recordsCount !== undefined ? `${recordsCount.toLocaleString()} reg` : 'Cargando...'}
+          <div className="glass-pill px-3 py-1.5 rounded-xl text-xs flex items-center gap-2 hidden sm:flex">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <Database className="w-3.5 h-3.5 text-neutral-400" />
+            <span className="font-mono text-neutral-200">
+              {recordsCount !== undefined ? `${recordsCount.toLocaleString()} temas` : '...'}
             </span>
-            <span className="text-slate-600">|</span>
-            <span className="font-semibold text-slate-200">
+            <span className="text-neutral-600">/</span>
+            <span className="font-mono text-neutral-200">
               {coursesCount !== undefined ? `${coursesCount} cursos` : ''}
             </span>
           </div>
 
-          {/* Network / Offline pill */}
+          {/* Network indicator */}
           <div
-            className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${
-              isOnline
-                ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400'
-                : 'bg-amber-500/10 border-amber-500/20 text-amber-400'
-            }`}
-            title={isOnline ? 'Conectado a internet' : 'Modo fuera de línea activo (IndexedDB)'}
+            className="glass-pill px-2.5 py-1.5 rounded-xl text-xs flex items-center gap-1.5 font-mono"
+            title={isOnline ? 'Online' : 'Offline'}
           >
-            {isOnline ? <Wifi className="w-3.5 h-3.5" /> : <WifiOff className="w-3.5 h-3.5" />}
-            <span className="hidden sm:inline">{isOnline ? 'Online' : 'Offline'}</span>
+            {isOnline ? <Wifi className="w-3.5 h-3.5 text-neutral-300" /> : <WifiOff className="w-3.5 h-3.5 text-neutral-500" />}
+            <span className="hidden md:inline text-[11px]">{isOnline ? 'Online' : 'Offline'}</span>
           </div>
 
-          {/* Zero Cost Badge */}
-          <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-800/60 border border-slate-700/50 text-xs text-slate-300">
-            <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>0 MXN/mes</span>
-          </div>
-
-          {/* Theme Toggle */}
+          {/* Settings / IA button */}
           <button
-            onClick={onToggleDarkMode}
-            className="p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 transition"
-            aria-label="Cambiar tema visual"
+            onClick={onOpenSettings}
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white text-black font-semibold text-xs hover:bg-neutral-200 transition shadow-[0_0_15px_rgba(255,255,255,0.12)] touch-manipulation"
           >
-            {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-indigo-400" />}
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>IA & Nube</span>
           </button>
         </div>
       </div>
