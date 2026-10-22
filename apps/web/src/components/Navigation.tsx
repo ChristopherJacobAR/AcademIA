@@ -7,14 +7,16 @@ import {
   AlertTriangle,
   Variable,
   Gamepad2,
-  HardDriveDownload
+  HardDriveDownload,
+  Microscope
 } from 'lucide-react';
 
 export type ActiveTab =
   | 'dashboard'
-  | 'waves'
   | 'courses'
+  | 'waves'
   | 'records'
+  | 'science'
   | 'alerts'
   | 'concept'
   | 'arcade'
@@ -31,9 +33,10 @@ export const Navigation: React.FC<NavigationProps> = ({ activeTab, onTabChange }
     { id: 'courses', label: '307 Asignaturas', icon: GraduationCap },
     { id: 'waves', label: '14 Olas Paralelas', icon: Layers },
     { id: 'records', label: '9,137 Temas Fuente', icon: FileText },
-    { id: 'alerts', label: '112 Alertas', icon: AlertTriangle },
+    { id: 'science', label: 'Lab & Science Hub', icon: Microscope },
     { id: 'concept', label: 'Ficha KaTeX', icon: Variable },
     { id: 'arcade', label: '18 Videojuegos', icon: Gamepad2 },
+    { id: 'alerts', label: '112 Alertas', icon: AlertTriangle },
     { id: 'backup', label: 'Respaldos', icon: HardDriveDownload }
   ] as const;
 

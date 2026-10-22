@@ -9,6 +9,7 @@ import { AuditAlertsView } from './views/AuditAlertsView.js';
 import { ConceptKaTeXView } from './views/ConceptKaTeXView.js';
 import { ArcadeView } from './views/ArcadeView.js';
 import { BackupView } from './views/BackupView.js';
+import { ScienceHubView } from './views/ScienceHubView.js';
 import { SettingsModal } from './components/SettingsModal.js';
 
 export const App: React.FC = () => {
@@ -29,6 +30,7 @@ export const App: React.FC = () => {
         {activeTab === 'courses' && <CoursesView />}
         {activeTab === 'waves' && <ParallelWavesView />}
         {activeTab === 'records' && <SourceRecordsView />}
+        {activeTab === 'science' && <ScienceHubView />}
         {activeTab === 'alerts' && <AuditAlertsView />}
         {activeTab === 'concept' && <ConceptKaTeXView />}
         {activeTab === 'arcade' && <ArcadeView />}
@@ -37,9 +39,9 @@ export const App: React.FC = () => {
 
       <footer className="border-t border-white/[0.06] bg-black/80 py-5 px-6 text-center text-xs text-neutral-500 font-light relative z-10">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
-          <span>AcademIA v2.0 • Diseño Minimalista Monocromo & Glassmorphism</span>
+          <span>AcademIA v2.0 • UX/UI Pro Max • Minimalista Monocromo & Glassmorphism</span>
           <span className="font-mono text-[11px] text-neutral-400">
-            307 Asignaturas • 14 Frentes • 9,137 Temas Inmutables
+            307 Asignaturas • 14 Frentes • 9,137 Temas Inmutables • Science Lab
           </span>
         </div>
       </footer>
