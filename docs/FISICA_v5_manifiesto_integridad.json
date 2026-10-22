@@ -1,0 +1,58 @@
+{
+  "version": "5.0",
+  "counts": {
+    "version": "5.0-integracion-conservativa-y-paralela",
+    "date": "2026-10-21",
+    "course_count": 307,
+    "original_course_count": 303,
+    "prior_added_course_count": 4,
+    "original_base_topic_count": 3695,
+    "tech_epigraph_count": 3313,
+    "udeg_raw_line_count": 1609,
+    "udeg_derived_topic_count": 1421,
+    "v5_module_count": 52,
+    "v5_new_topic_count": 520,
+    "archival_plus_new_records": 9137,
+    "number_of_topological_waves": 14,
+    "graph_directed_edges": 540,
+    "cycle_count": 0,
+    "topic_level_pedagogical_validation": "INCOMPLETA",
+    "comparative_world_record_certified": false,
+    "teaching_subject_mapping_review_pending": true,
+    "original_licensing": "las fuentes no se redistribuyen íntegramente fuera del proyecto sin revisión de derechos",
+    "training_use": "el texto técnico y las fuentes se conservan; no afirmar contenidos dominados sin evaluación",
+    "concurrency": "asignaturas de un mismo bloque pueden estudiarse en paralelo si no tienen dependencias directas ni indirectas entre sí; carga y secuencias finas requieren evaluación"
+  },
+  "files": [
+    {
+      "name": "Academia_FISICA_v5_catalogo_integro.json",
+      "sha256": "b20332e27223c1657500254170b85574683c2a43a863eb988d75179e9ad2c361",
+      "bytes": 15212884
+    },
+    {
+      "name": "FISICA_v5_inventario_completo.csv",
+      "sha256": "5b221389826452c11f57e67b0b1b878ad3ee4a4594e7a49e8ae813aa0589f050",
+      "bytes": 2138896
+    },
+    {
+      "name": "FISICA_v5_bloques_paralelos.csv",
+      "sha256": "32a62524724103e70fe11842b3b52718e93dcfbc269454cae6836ebeffd64af8",
+      "bytes": 47291
+    },
+    {
+      "name": "FISICA_v5_ampliaciones_520.csv",
+      "sha256": "e0b0ecb54d07268793866c2b71e299c97a64468c84757a7a45fa192a400795d0",
+      "bytes": 180143
+    },
+    {
+      "name": "Plan_Maestro_Academia_FISICA_v5_integral.xlsx",
+      "sha256": "7c43c797cccb1580fdbef7ae64bcb6c55d1f619cb3f0be8e072fed6ed3056516",
+      "bytes": 618051
+    },
+    {
+      "name": "Dictamen_Academia_FISICA_v5.md",
+      "sha256": "3dd126f04f63458e910421073b4eb2b4f82935fae341ddf188fbb58ac1ff02dc",
+      "bytes": 3838
+    }
+  ]
+}

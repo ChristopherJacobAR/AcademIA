@@ -1,0 +1,178 @@
+{
+  "architecture_version": "2.0",
+  "date": "2026-10-21",
+  "default_budget": "0 MXN/mes, sujeto a planes sin costo y cuotas",
+  "chosen_backend": "Supabase Free OPTIONAL",
+  "offline_primary": "IndexedDB/Dexie",
+  "archive": "Google Drive private/manual + personal computer",
+  "curriculum_v5_expected_records": 9137,
+  "game_concepts_count": 18,
+  "games": [
+    {
+      "id": "game.orbitas",
+      "title": "Órbita: Rescate Galileo",
+      "domains": [
+        "fisica",
+        "matematicas",
+        "ingenieria"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.balistica",
+      "title": "Estadio Balístico",
+      "domains": [
+        "fisica",
+        "deporte"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.fourier",
+      "title": "Sintetizador de Fourier",
+      "domains": [
+        "matematicas",
+        "musica",
+        "electronica"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.cocina",
+      "title": "Cocina de Calor",
+      "domains": [
+        "fisica",
+        "quimica",
+        "cocina"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.circuitos",
+      "title": "Circuit Quest",
+      "domains": [
+        "fisica",
+        "ingenieria"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.puente",
+      "title": "Puente Estructural",
+      "domains": [
+        "fisica",
+        "ingenieria"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.gauss",
+      "title": "Laboratorio Gauss",
+      "domains": [
+        "fisica",
+        "matematicas"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.reactor",
+      "title": "Reactor Matemático",
+      "domains": [
+        "quimica",
+        "ingenieria"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.tunel",
+      "title": "Túnel Cuántico",
+      "domains": [
+        "fisica",
+        "matematicas"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.interferencias",
+      "title": "Óptica Interferencial",
+      "domains": [
+        "fisica",
+        "arte"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.clima",
+      "title": "Clima de Energía",
+      "domains": [
+        "fisica",
+        "quimica"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.unidades",
+      "title": "Inspector de Unidades",
+      "domains": [
+        "todas"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.caos",
+      "title": "Caos y Péndulos",
+      "domains": [
+        "fisica",
+        "matematicas"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.mercado",
+      "title": "Mercado de Energía",
+      "domains": [
+        "ingenieria",
+        "matematicas",
+        "finanzas"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.cristales",
+      "title": "Morfología de Cristales",
+      "domains": [
+        "quimica",
+        "fisica"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.exoplanetas",
+      "title": "Observatorio de Exoplanetas",
+      "domains": [
+        "fisica",
+        "estadistica"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.robot",
+      "title": "Robot de Control",
+      "domains": [
+        "ingenieria",
+        "robotica"
+      ],
+      "status": "planned_not_implemented"
+    },
+    {
+      "id": "game.feynman",
+      "title": "Feynman Escape Room",
+      "domains": [
+        "todas"
+      ],
+      "status": "planned_not_implemented"
+    }
+  ],
+  "full_architecture_file": "ARQUITECTURA_MAESTRA_ACADEMIA_CIENTIFICA_IA_v2.md",
+  "start_prompt": "PROMPT_DE_ARRANQUE_PARA_AGENTE_CODIFICADOR_v2.md"
+}
